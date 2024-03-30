@@ -4,16 +4,24 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+addEventListener('click', (e) => {
+  document.querySelector("like-glyph")
+    // console.log("like-glyph")
+    .then((response) => response.json())
+    .then((data) => {
+      mimicServerCall(data)
 
+    })
+})
 
 
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
 //------------------------------------------------------------------------------
 
-function mimicServerCall(url="http://mimicServer.example.com", config={}) {
-  return new Promise(function(resolve, reject) {
-    setTimeout(function() {
+function mimicServerCall(url = "http://mimicServer.example.com", config = {}) {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
       let isRandomFailure = Math.random() < .2
       if (isRandomFailure) {
         reject("Random server error. Try again.");
